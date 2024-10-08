@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                height: 100px;
+                display: flex;
+                margin-top: 200px;
+
+                align-items: center;
+                justify-content: center;
+                
+                background-color:rgb(215, 136, 241) ;
+            }
+            .clock{
+                border: 1px solid rgb(25, 37, 27);
+                color: rgb(235, 225, 232);
+                padding: 40px;
+                border-radius: 10px;
+                background-color: rgb(107, 102, 103);
+            }
+            #Date,#welcome{
+                font-size: 20px;
+                text-align: center;
+            }
+            #welcome{
+                color: black;
+            }
+            .clock ul{
+                list-style: none;
+                display: flex;
+                font-size: 90px;
+                gap: 15px;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="clock">
+                <p id="welcome"> Created by Navaneetha</p>
+                <div id="Date"> September 2023</div>
+
+                <ul>
+                  
+                <li id="hours">05</li>
+                    <li id="point">:</li>
+                    <li id="min">20</li>
+                    <li id="point">:</li>
+                    <li id="sec">30</li>
+                   
+                </ul>
+            </div>
+        </div>
+      
+        <script>
+
+            function clock(){
+                
+                var monthNames = [ "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December" ]; 
+                var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+                var today = new Date();
+            
+
+                document.getElementById('Date').innerHTML = (dayNames[today.getDay()] + "  " + 
+                today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' +today.getFullYear());
+
+                
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+     
+                if (h >= 12) {
+                if (h > 12)
+                    h -= 12;
+                am_pm = "PM";
+            } else if (h == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+
+                h = h<10? '0'+h: h;
+                m = m<10? '0'+m: m;
+                s = s<10? '0'+s: s;               
+
+                document.getElementById('hours').innerHTML = h;
+                document.getElementById('min').innerHTML = m;
+                document.getElementById('sec').innerHTML = s;
+
+            }var inter = setInterval(clock,200);
+
+        </script>
+    </body>
+</html>
